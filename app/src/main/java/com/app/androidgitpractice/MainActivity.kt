@@ -42,7 +42,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         )
 
         Text(
-            text = "Testing git practice",
+            text = "Testing git practice from profile branch",
             modifier = modifier
         )
     }
