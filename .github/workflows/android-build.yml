@@ -29,7 +29,7 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleRelease
 
-      # 2. Sign the APK using your hidden GitHub Secrets
+      # 2. Sign the APK securely using your GitHub Vault
       - name: Sign APK
         uses: r0adkll/sign-android-release@v1
         id: sign_app
@@ -39,7 +39,8 @@ jobs:
           alias: ${{ secrets.SIGNING_KEY_ALIAS }}
           keyStorePassword: ${{ secrets.KEYSTORE_PASSWORD }}
           keyPassword: ${{ secrets.KEY_PASSWORD }}
-          buildToolsVersion: 34.0.0
+        env:
+          BUILD_TOOLS_VERSION: "34.0.0"
 
       # 3. Create a public GitHub Release and attach the Signed APK
       - name: Publish GitHub Release
